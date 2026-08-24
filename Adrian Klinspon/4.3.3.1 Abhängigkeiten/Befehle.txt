@@ -1,0 +1,2 @@
+echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf
+sudo apt install -y python3-flask dnsmasq python3-scapy

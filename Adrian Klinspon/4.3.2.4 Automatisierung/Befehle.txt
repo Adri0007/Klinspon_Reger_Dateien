@@ -1,0 +1,2 @@
+sudo nano /usr/local/bin/Level2_Setup.sh
+sudo chmod +x /usr/local/bin/Level2_Setup.sh

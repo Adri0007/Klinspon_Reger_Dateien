@@ -1,0 +1,11 @@
+sudo nano /etc/systemd/system/Level3-iptables.service
+
+sudo nano /etc/systemd/system/Level3-Webserver.service
+
+sudo nano /etc/systemd/system/
+
+sudo systemctl daemon-reload
+sudo systemctl enable --now Level3-iptables.service
+sudo systemctl enable --now Level3-Webserver.service
+sudo systemctl enable --now Level3-traffic.service
+sudo reboot

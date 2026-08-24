@@ -1,0 +1,11 @@
+[Unit]
+Description=Level 3 iptables Regeln
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/pi/Level3/setup_iptables.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

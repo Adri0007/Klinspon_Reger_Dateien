@@ -1,0 +1,9 @@
+mkdir -p /home/pi/Level2
+echo "CTF{n3xt_c4pt1v3_p0rt4l}" | sudo tee /home/pi/Level2/token.txt
+
+cat <<EOF | sudo tee /etc/wpa_supplicant/Level2_client.conf
+network={
+	ssid="Level2_MAC_Spoofing"
+	psk="SpoofMeIfYouCan"
+}
+EOF

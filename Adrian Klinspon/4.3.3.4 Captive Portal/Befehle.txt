@@ -1,0 +1,3 @@
+mkdir -p ~/Level3/logs
+mkdir -p ~/Level3/templates
+cd ~/Level3

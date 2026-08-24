@@ -1,0 +1,11 @@
+sudo nmcli con add type wifi ifname wlan0 mode ap con-name AP-WPA2 ssid "Level2_MAC_Spoofing"
+sudo nmcli con modify AP-WPA2 wifi-sec.key-mgmt wpa-psk
+sudo nmcli con modify AP-WPA2 wifi-sec.psk "SpoofMeIfYouCan"
+sudo nmcli con modify AP-WPA2 wifi-sec.proto rsn
+sudo nmcli con modify AP-WPA2 wifi-sec.pairwise ccmp
+sudo nmcli con modify AP-WPA2 wifi-sec.group ccmp
+sudo nmcli con modify AP-WPA2 wifi.band bg
+sudo nmcli con modify AP-WPA2 wifi.channel 6
+sudo nmcli con modify AP-WPA2 wifi-sec.pmf disable
+sudo nmcli con modify AP-WPA2 ipv4.method shared ipv4.address 192.168.42.1/24
+sudo nmcli con up AP-WPA2

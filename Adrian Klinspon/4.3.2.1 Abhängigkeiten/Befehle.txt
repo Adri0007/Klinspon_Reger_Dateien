@@ -1,0 +1,1 @@
+sudo apt install iptables isc-dhcp-client

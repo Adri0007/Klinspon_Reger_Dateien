@@ -1,0 +1,14 @@
+[Unit]
+Description=Level 3 Traffic Generator
+Wants=network-online.target
+After=network-online.target Level3-Webserver.service
+
+[Service]
+User=root
+WorkingDirectory=/home/pi/Level3
+ExecStart=/usr/bin/python3 /home/pi/Level3/traffic_generator.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

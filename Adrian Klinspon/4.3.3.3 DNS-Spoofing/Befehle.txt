@@ -1,0 +1,4 @@
+sudo nano /etc/dnsmasq.d/captive.conf
+
+sudo systemctl restart dnsmasq
+sudo systemctl enable dnsmasq
