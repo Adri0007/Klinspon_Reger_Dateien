@@ -1,0 +1,6 @@
+sudo apt update
+sudo apt upgrade -y	
+
+sudo apt install -y dkms libelf-dev linux-headers-$(uname -r)
+
+sudo reboot

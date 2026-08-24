@@ -1,0 +1,19 @@
+echo "blacklist r8188eu" | sudo tee /etc/modprobe.d/realtek.conf
+echo "blacklist rtl8xxxu" | sudo tee -a /etc/modprobe.d/realtek.conf
+
+git clone https://github.com/gglluukk/rtl8188eus.(*@{\textcolor{black}{git}}@*)
+cd rtl8188eus
+
+sed -i 's/CONFIG_PLATFORM_I386_PC = y/CONFIG_PLATFORM_I386_PC = n/g' Makefile
+sed -i 's/CONFIG_PLATFORM_ARM_RPI = n/CONFIG_PLATFORM_ARM_RPI = y/g' Makefile	
+sed -i 's/CONFIG_PLATFORM_ARM_AARCH64 = n/CONFIG_PLATFORM_ARM_AARCH64 = y/g' Makefile
+
+make
+sudo make install
+
+sudo rmmod r8188eu rtl8xxxu 8188eu 2>/dev/null	
+sudo modprobe 8188eu
+cd ..
+
+sudo raspi-config nonint do_wifi_country DE
+sudo rfkill unblock wlan
