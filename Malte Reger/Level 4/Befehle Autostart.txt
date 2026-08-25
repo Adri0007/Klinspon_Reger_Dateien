@@ -1,0 +1,22 @@
+sudo nano /etc/systemd/system/lvl4-lab.service
+
+[Unit]
+Description=Level 4 WPA-Enterprise Autostart
+After=multi-user.target network.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /home/user/level4_setup/start_lvl4.sh
+Restart=always
+RestartSec=5
+User=root
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+
+
+sudo systemctl daemon-reload
+sudo systemctl enable lvl4-lab.service

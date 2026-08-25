@@ -1,0 +1,20 @@
+nano ~/level4_setup/hostapd-enterprise.conf
+
+interface=wlan2
+driver=nl80211
+ssid=Level4_WPA-Enterprise
+hw_mode=g
+channel=6
+ieee80211n=1
+
+wpa=2
+wpa_key_mgmt=WPA-EAP
+wpa_pairwise=CCMP
+
+ieee8021x=1
+eap_server=1
+eap_user_file=/home/user/level4_setup/hostapd.eap_user
+
+ca_cert=/home/user/level4_setup/ca.pem
+server_cert=/home/user/level4_setup/server.pem
+private_key=/home/user/level4_setup/server.key

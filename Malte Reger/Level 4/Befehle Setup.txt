@@ -1,0 +1,32 @@
+mkdir -p ~/level4_setup
+cd ~/level4_setup
+
+nano 01_generate_certs.sh
+
+#!/bin/bash
+
+cd ~/level4_setup
+
+echo "Erstelle Zertifikate..."
+openssl genrsa -out ca.key 2048
+openssl req -new -x509 -days 365 -key ca.key -out ca.pem \
+-subj "/C=DE/ST=NRW/L=Labor/O=EnterpriseLab/CN=Lab-Root-CA"
+
+openssl genrsa -out server.key 2048
+openssl req -new -key server.key -out server.csr \
+-subj "/C=DE/ST=NRW/L=Labor/O=EnterpriseLab/CN=radius.lab.local"
+
+openssl x509 -req -days 365 -in server.csr -CA ca.pem -CAkey ca.key \
+-CAcreateserial -out server.pem
+
+echo "Zertifikate erfolgreich erstellt!"
+
+
+
+
+chmod +x ~/level4_setup/01_generate_certs.sh
+
+
+
+
+~/level4_setup/01_generate_certs.sh

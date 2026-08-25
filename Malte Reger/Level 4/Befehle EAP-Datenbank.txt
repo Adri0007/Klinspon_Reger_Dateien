@@ -1,0 +1,5 @@
+nano ~/level4_setup/hostapd.eap_user
+
+*   PEAP
+
+"student1"   MSCHAPV2   "Passwort12345"   [2]

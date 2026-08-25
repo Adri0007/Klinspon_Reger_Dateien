@@ -1,0 +1,26 @@
+nano ~/level4_setup/start_lvl4.sh
+
+#!/bin/bash
+sleep 15
+echo "=== Starte Level 4 (WPA2-Enterprise) ==="
+
+sudo iw dev wlan2 set power_save off 2>/dev/null
+sudo iw dev wlan3 set power_save off 2>/dev/null
+
+echo "[1/2] Verbinde Client (wlan3) per nmcli..."
+sudo nmcli connection add type wifi ifname wlan3 con-name "Enterprise-Opfer" ssid "Firmen_WLAN_Lvl4" 2>/dev/null
+sudo nmcli connection modify "Enterprise-Opfer" \
+    802-11-wireless-security.key-mgmt wpa-eap \
+    802-1x.eap peap \
+    802-1x.phase2-auth mschapv2 \
+    802-1x.identity "student1" \
+    802-1x.password "Passwort12345" \
+    802-1x.system-ca-certs no
+
+echo "[2/2] Starte WPA2-Enterprise AP auf wlan2..."
+sudo hostapd /home/user/level4_setup/hostapd-enterprise.conf
+
+
+
+
+chmod +x ~/level4_setup/start_lvl4.sh
