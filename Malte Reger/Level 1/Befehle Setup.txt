@@ -1,0 +1,39 @@
+sudo apt update && sudo apt upgrade -y
+
+sudo apt install -y dkms git build-essential raspberrypi-kernel-headers
+
+git clone https://github.com/lwfinger/rtl8188eu.git
+cd rtl8188eu
+
+sudo ./dkms-install.sh
+
+echo 'blacklist r8188eu' | sudo tee -a '/etc/modprobe.d/realtek.conf'
+echo 'blacklist rtl8xxxu' | sudo tee -a '/etc/modprobe.d/realtek.conf'
+
+sudo reboot
+
+
+------------------------------------------------------------------------------------------------------
+
+
+
+sudo nmcli connection add type wifi ifname wlan1 con-name "WEP-Hotspot" autoconnect no ssid "Level1_WEP"
+
+sudo nmcli connection modify "WEP-Hotspot" 802-11-wireless.mode ap
+
+sudo nmcli connection modify "WEP-Hotspot" 802-11-wireless.channel 0
+
+sudo nmcli connection modify "WEP-Hotspot" ipv4.method shared
+
+sudo nmcli connection modify "WEP-Hotspot" 802-11-wireless-security.key-mgmt none
+sudo nmcli connection modify "WEP-Hotspot" 802-11-wireless-security.wep-key0 "labor"
+sudo nmcli connection modify "WEP-Hotspot" 802-11-wireless-security.wep-key-type 1
+
+
+
+
+sudo nmcli connection add type wifi ifname wlan0 con-name "WEP-Empfaenger" ssid "Level1_WEP"
+
+sudo nmcli connection modify "WEP-Empfaenger" 802-11-wireless-security.key-mgmt none
+sudo nmcli connection modify "WEP-Empfaenger" 802-11-wireless-security.wep-key0 "labor"
+sudo nmcli connection modify "WEP-Empfaenger" 802-11-wireless-security.wep-key-type 1

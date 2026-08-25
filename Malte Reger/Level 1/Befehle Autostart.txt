@@ -1,0 +1,47 @@
+sudo nano /usr/local/bin/start-wep-demo.sh
+
+#!/bin/bash
+
+sleep 10
+
+# Verbindungen aktivieren
+nmcli connection up "WEP-Hotspot"
+nmcli connection up "WEP-Empfaenger"
+
+sleep 5
+
+arp -i wlan0 -s 10.42.0.99 00:11:22:33:44:55
+ip route add 10.42.0.99 dev wlan0 2>/dev/null || true
+
+ping -f -s 1400 10.42.0.99 -I wlan0 > /dev/null 2>&1
+
+
+
+
+sudo chmod +x /usr/local/bin/start-wep-demo.sh
+
+
+------------------------------------------------
+
+
+sudo nano /etc/systemd/system/wep-demo.service
+
+[Unit]
+Description=Level 1 WEP Traffic Generator
+After=NetworkManager.service
+Wants=NetworkManager.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/start-wep-demo.sh
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+
+sudo systemctl daemon-reload
+sudo systemctl enable wep-demo.service

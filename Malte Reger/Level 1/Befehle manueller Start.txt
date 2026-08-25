@@ -1,0 +1,9 @@
+sudo nmcli connection up "WEP-Hotspot"
+
+sudo nmcli connection up "WEP-Empfaenger"
+
+sudo arp -i wlan0 -s 10.42.0.99 00:11:22:33:44:55
+
+sudo ip route add 10.42.0.99 dev wlan0
+
+sudo ping -f -s 1400 10.42.0.99 -I wlan0
