@@ -1,3 +1,4 @@
+cd ..
 sudo nano /etc/systemd/system/Level3-iptables.service
 
 sudo nano /etc/systemd/system/Level3-Webserver.service
