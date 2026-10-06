@@ -1,3 +1,9 @@
 mkdir -p ~/Level3/logs
 mkdir -p ~/Level3/templates
+
 cd ~/Level3
+sudo nano app.py
+
+cd ~/Level3/templates
+sudo nano login.htm
+sudo nano success.html
