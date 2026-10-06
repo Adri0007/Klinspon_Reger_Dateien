@@ -1,1 +1,4 @@
+cd ~/Level3
+sudo nano setup_iptables.sh
+
 sudo chmod +x ~/Level3/setup_iptables.sh
