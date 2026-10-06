@@ -13,7 +13,7 @@ ip link set wlan1 down 2>/dev/null
 ip link set wlan1 address 3c:52:a1:2a:bb:bb
 ip link set wlan1 up
 
-wpa_supplicant -B -i wlan1 -c /etc/(*@\textcolor{black}{wpa\_supplicant}@*)/Level2_client.conf
+wpa_supplicant -B -i wlan1 -c /etc/wpa_supplicant/Level2_client.conf
 sleep 5
 
 ip addr flush dev wlan1 2>/dev/null
